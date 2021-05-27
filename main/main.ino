@@ -54,7 +54,7 @@ void loop() {
 //------------------------------------------------------------------//
 
 
-void e() {
+void charOne() {
   /* precondition: the botton was clicked(1)
    *  first we have to wait a unit
    *  now that the unit is over, we can check the button again,
@@ -83,10 +83,15 @@ void e() {
   // now we determine wether the button is still pressed down.
   if (digitalRead(BN)) {
     // if the button is still pressed down after unit 1
-    
+    // this bit is problably a dash(-), we have to make sure though.
     delay(UNIT); // unit 2
+    
     if (digitalRead(BN)) {
-      t();
+      // if the button is not pressed down anymore
+      delay(UNIT); // unit 3
+      // this bit is a dash
+      keyboard.write('t');
+      keyboard.write(' ');
     } else {
       
     }
@@ -104,7 +109,7 @@ void e() {
       break;
       
     }else {
-      
+      //this bit is a dot.
       delay(UNIT);
       // if the button isn't pressed down in units 2,3 and 4, the character has ended.
       // this means we can write the current char to the computer.
